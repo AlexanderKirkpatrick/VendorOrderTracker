@@ -4,9 +4,21 @@
 
 <h1>Add a new order to @Model.Name</h1>
 
-<form action="/vendors/@Model.Id/orders" method="post">
-  <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
-  <label for="orderDescription">Order Description</label>
-  <input id="orderDescription" name="orderDescription" type="text">
-  <button type='submit'>Add order</button>
-</form>
+ <form action="/vendors/@Model.Id/orders" method ="post">
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text" required>
+    <label for="description">Description</label>
+    <input id="description" name="description" type="text" required>
+    <label for="quantity">Quantity</label>
+    <input id="quantity" name="quantity" type="number" required>
+    <label for="price">Price</label>
+    <input id="price" name="price" type="number" required>
+    <label for="date">Date</label>
+    <input id="date" name="date" type="string" required>
+    <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id" required>
+    <button type="submit">Add</button>
+  </form>
+
+  <p><a href='/vendors/@Model.Id'>View Current Vendor: @Model.Name</a></p>
+  <p><a href='/vendors'>View All Vendors</a></p>
+  <p><a href='/'>Return to Main Page</a></p>
