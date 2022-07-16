@@ -4,11 +4,13 @@
 
 @using VendorOrderTracker.Models;
 
-<h3>Vendor Notes:</h3>
+<h1>@Model["vendor"].Name's Order Details<h1>
+<br>
+<h3>@Model["vendor"].Name's Notes:</h3>
 
   <p>@Model["vendor"].Notes</p>
 
-<h3>Vendor's orders:</h3>
+<h3>@Model["vendor"].Name's Orders:</h3>
 
 <ol>
 @foreach (Order order in @Model["orders"])
@@ -18,6 +20,6 @@
 </ol>
 
 
-<p><a href='/vendors/@Model["vendor"].Id/orders/new'>Add a new order</a></p>
-<p><a href='/vendors'>Return to vendor list</a></p>
-<p><a href='/'>Return to Main Page</a></p>
+<h4><a href='/vendors/@Model["vendor"].Id/orders/new'>Add a new order</a></h4>
+<h4><a href='/vendors'>Return to vendor list</a></h4>
+<h4><a href='/'>Return to Main Page</a></h4>
