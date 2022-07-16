@@ -4,6 +4,10 @@
 
 @using VendorOrderTracker.Models;
 
+<h3>Vendor Notes:</h3>
+
+  <p>@Model["vendor"].Notes</p>
+
 <h3>Vendor's orders:</h3>
 
 <ol>
@@ -12,10 +16,6 @@
   <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Description</a></li>
 }
 </ol>
-
-<h3>Vendor Notes:</h3>
-
-  <p>@Model["vendor"].Notes</p>
 
 
 <p><a href='/vendors/@Model["vendor"].Id/orders/new'>Add a new order</a></p>
