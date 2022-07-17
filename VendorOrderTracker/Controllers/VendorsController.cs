@@ -21,6 +21,13 @@ namespace VendorOrderTracker.Controllers
       return View();
     }
 
+    [HttpPost("/vendors/delete")]
+    public ActionResult DeleteAll()
+    {
+      Vendor.ClearAll();
+      return View();
+    }
+
     [HttpPost("/vendors")]
     public ActionResult Create(string vendorName, string vendorNotes)
     {
