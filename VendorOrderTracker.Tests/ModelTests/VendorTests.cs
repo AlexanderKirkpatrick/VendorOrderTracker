@@ -17,26 +17,21 @@ namespace VendorOrderTracker.Tests
     [TestMethod]
     public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
     {
-      Vendor newVendor = new Vendor("test Vendor");
+      Vendor newVendor = new Vendor("test Vendor", "test notes");
       Assert.AreEqual(typeof(Vendor), newVendor.GetType());
     }
 
     [TestMethod]
     public void GetName_ReturnsName_String()
     {
-      string name = "Test Vendor";
-      Vendor newVendor = new Vendor(name);
-
-      string result = newVendor.Name;
-
-      Assert.AreEqual(name, result);
+      Vendor newVendor = new Vendor("Test Vendor", "Test Notes"); 
+      Assert.AreEqual("Test Vendor", newVendor.Name);
     }
 
     [TestMethod]
     public void GetId_ReturnsVendorId_Int()
     {
-      string name = "Test Vendor";
-      Vendor newVendor = new Vendor(name);
+      Vendor newVendor = new Vendor("Test Vendor", "Test Notes");
 
       int result = newVendor.Id;
 
@@ -46,43 +41,33 @@ namespace VendorOrderTracker.Tests
     [TestMethod]
     public void GetAll_ReturnsAllVendorObjects_VendorList()
     {
-      string name01 = "Bread";
-      string name02 = "Cake";
-      Vendor newVendor1 = new Vendor(name01);
-      Vendor newVendor2 = new Vendor(name02);
+
+      Vendor newVendor1 = new Vendor("Test Vendor", "Test Notes");
+      Vendor newVendor2 = new Vendor("Vendors Test", "Notes Test");
       List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
-
-      List<Vendor> result = Vendor.GetAll();
-
-      CollectionAssert.AreEqual(newList, result);
+      CollectionAssert.AreEqual(newList, Vendor.GetAll());
     }
 
     [TestMethod]
     public void Find_ReturnsCorrectVendor_Vendor()
     {
-      string name01 = "Bread";
-      string name02 = "Cake";
-      Vendor newVendor1 = new Vendor(name01);
-      Vendor newVendor2 = new Vendor(name02);
+      Vendor newVendor1 = new Vendor("Test Vendor", "Test Notes");
+      Vendor newVendor2 = new Vendor("Vendors Test", "Notes Test");
+      List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
+       Assert.AreEqual(newVendor2, Vendor.Find(2));
 
-      Vendor result = Vendor.Find(2);
-
-      Assert.AreEqual(newVendor2, result);
     }
 
     [TestMethod]
     public void AddOrder_AssociatesOrderWithVendor_OrderList()
     {
-      string description = "Loaf of bread.";
-      Order newOrder = new Order(description);
+      Vendor newVendor1 = new Vendor("Test Vendor", "Test Notes");
+      Vendor newVendor2 = new Vendor("Vendors Test", "Notes Test");
+      Order newOrder = new Order("Test Vendor", "Test Notes", "44", "45", "Feb");
       List<Order> newList = new List<Order> { newOrder };
-      string name = "Bread";
-      Vendor newVendor = new Vendor(name);
-      newVendor.AddOrder(newOrder);
+      newVendor1.AddOrder(newOrder);
 
-      List<Order> result = newVendor.Orders;
-
-      CollectionAssert.AreEqual(newList, result);
+      CollectionAssert.AreEqual(newList, newVendor1.Orders);
     }
     
   }

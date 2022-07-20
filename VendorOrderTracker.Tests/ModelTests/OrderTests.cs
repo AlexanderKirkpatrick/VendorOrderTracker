@@ -17,24 +17,21 @@ namespace VendorOrderTracker.Tests
     [TestMethod]
     public void OrderConstructor_CreatesInstanceOfOrder_Order()
     {
-      Order newOrder = new Order("test");
+      Order newOrder = new Order("Test Vendor", "Test Notes", "44", "45", "Feb");
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
 
     [TestMethod]
     public void GetDescription_ReturnsDescription_String()
     {
-      string description = "Loaf of bread.";
-      Order newOrder = new Order(description);
-      string result = newOrder.Description;
-      Assert.AreEqual(description, result);
+      Order newOrder = new Order("Test Vendor", "Test Notes", "44", "45", "Feb");
+      Assert.AreEqual("Test Notes", newOrder.Description);
     }
 
     [TestMethod]
     public void SetDescription_SetDescription_String()
     {
-      string description = "Loaf of bread.";
-      Order newOrder = new Order(description);
+      Order newOrder = new Order("Test Vendor", "Test Notes", "44", "45", "Feb");
       string updatedDescription = "Pumpernickel.";
       newOrder.Description = updatedDescription;
       string result = newOrder.Description;
@@ -52,10 +49,8 @@ namespace VendorOrderTracker.Tests
     [TestMethod]
     public void GetAll_ReturnsOrders_OrderList()
     {
-      string description01 = "Loaf of bread";
-      string description02 = "Chocolate cake";
-      Order newOrder1 = new Order(description01);
-      Order newOrder2 = new Order(description02);
+      Order newOrder1 = new Order("Test Vendor", "Test Notes", "44", "45", "Feb");
+      Order newOrder2 = new Order("Tests Vendors", "Tests Note", "446", "456", "March");
       List<Order> newList = new List<Order> { newOrder1, newOrder2 };
 
       List<Order> result = Order.GetAll();
